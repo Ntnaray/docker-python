@@ -6,7 +6,7 @@ pipeline {
     stages {
     stage('Build'){
         steps {
-            sh 'docker build -t swamy877/Python_Django_New:latest . '
+            sh 'docker build -t swamy877/python_django_new:latest . '
         }
     }
     stage('Login'){
