@@ -6,9 +6,8 @@ pipeline {
     stages {
     stage('Build'){
         steps {
-            sh 'docker build -t swamy877/Python_Django_New :latest . '
+            sh 'docker build -t swamy877/Python_Django_New:latest . '
         }
-
     }
     stage('Login'){
         steps {
@@ -21,12 +20,12 @@ pipeline {
             sh 'docker push swamy877/Python_Django_New:latest '
         }
     }
+    }
     post {
-        always{
+        always {
             sh 'docker logout '
         }
     }
-
-
-    }
 }
+
+    
