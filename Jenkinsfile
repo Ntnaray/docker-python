@@ -1,23 +1,23 @@
 pipeline {
-    agents any
+    agent any
     environment {
         DOCKERHUB_CREDENTIALS = credentials ('swamy-docker-hub')
     }
     stages {
     stage('Build'){
-        step {
+        steps {
             sh 'docker build -t swamy877/Python_Django_New :latest . '
         }
 
     }
     stage('Login'){
-        step {
+        steps {
             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 
         }
     }
     stage('Push'){
-        step{
+        steps{
             sh 'docker push swamy877/Python_Django_New:latest '
         }
     }
