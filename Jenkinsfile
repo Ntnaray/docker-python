@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Push'){
         steps{
-            sh 'docker push swamy877/Python_Django_New:latest '
+            sh 'docker push swamy877/python_django_new:latest '
         }
     }
     }
