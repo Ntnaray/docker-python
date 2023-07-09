@@ -6,7 +6,7 @@ pipeline {
     stages {
     stage('Build'){
         steps {
-            sh 'docker build -t "swamy877/python_django_new:${env.BUILD_ID}" . '
+            sh 'docker build -t swamy877/python_django_new:latest . '
         }
     }
     stage('Login'){
@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Push'){
         steps{
-            sh 'docker push "swamy877/python_django_new:${env.BUILD_ID}"'
+            sh 'docker push swamy877/python_django_new:latest'
         }
     }
     stage('Deploy') {

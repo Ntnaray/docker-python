@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: python-django
-        image: swamy877/python_django_new:tagname
+        image: swamy877/python_django_new:latest
         resources:
           limits:
             memory: "128Mi"
