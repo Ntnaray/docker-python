@@ -6,7 +6,7 @@ pipeline {
     stages {
     stage('Build'){
         steps {
-            sh 'docker build -t swamy877/python_django_new:latest . '
+            sh 'docker build -t swamy877/python_django_new:${env.BUILD_ID} . '
         }
     }
     stage('Login'){
@@ -17,14 +17,19 @@ pipeline {
     }
     stage('Push'){
         steps{
-            sh 'docker push swamy877/python_django_new:latest '
+            sh 'docker push swamy877/python_django_new:${env.BUILD_ID}'
         }
     }
-    }
-    post {
-        always {
-            sh 'docker logout '
+    stage('Deploy') {
+        steps {
+            sh 'kubectl apply -f namespace.yaml'
+            sh 'kubectl apply -f deployment.yaml'
+            sh 'kubectl apply -f service.yaml'
+
         }
+    }
+
+
     }
 }
 
