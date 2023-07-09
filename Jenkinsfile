@@ -22,9 +22,7 @@ pipeline {
     }
     stage('Deploy') {
         steps {
-            sh 'kubectl apply -f namespace.yaml'
-            sh 'kubectl apply -f deployment.yaml'
-            sh 'kubectl apply -f service.yaml'
+            kubernetesDeploy(configs: "namespace.yaml","deployment.yaml", "service.yaml")
 
         }
     }
